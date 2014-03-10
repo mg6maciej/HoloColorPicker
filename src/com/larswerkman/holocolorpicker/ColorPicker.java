@@ -563,6 +563,11 @@ public class ColorPicker extends View {
 			Color.colorToHSV(color, mHSV);
 			mValueBar.setValue(mHSV[2]);
 		}
+		mCenterNewColor = color;
+		if (onColorChangedListener != null && color != oldChangedListenerColor ) {
+			onColorChangedListener.onColorChanged(color);
+			oldChangedListenerColor = color;
+		}
 
 		invalidate();
 	}
